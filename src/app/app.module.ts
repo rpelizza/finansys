@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
+import { HttpClientModule } from '@angular/common/http';
 
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
@@ -11,18 +12,19 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDatabase } from './in-memory-database'
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    LoadingBarModule,
-    LoadingBarRouterModule,
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		LoadingBarModule,
+		LoadingBarRouterModule,
+		HttpClientModule,
 
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+		HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
