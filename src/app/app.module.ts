@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser'
-import { NgModule } from '@angular/core'
+import { NgModule, ErrorHandler } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http';
 
 import { LoadingBarModule } from '@ngx-loading-bar/core';
@@ -9,12 +9,11 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
-import { InMemoryDatabase } from './in-memory-database'
+import { InMemoryDatabase } from './in-memory-database';
+import { ErrorService } from './core/sentry/error.service';
 
 @NgModule({
-	declarations: [
-		AppComponent
-	],
+	declarations: [AppComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
@@ -24,7 +23,9 @@ import { InMemoryDatabase } from './in-memory-database'
 
 		HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
 	],
-	providers: [],
+	providers: [
+		{ provide: ErrorHandler, useClass: ErrorService, },
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
