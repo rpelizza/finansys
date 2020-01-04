@@ -9,7 +9,7 @@ Sentry.init({
 @Injectable({
 	providedIn: 'root'
 })
-export class ErrorService implements ErrorHandler {
+export class ErrorHandlerService implements ErrorHandler {
 
 	constructor(private injector: Injector) { }
 
@@ -22,7 +22,7 @@ export class ErrorService implements ErrorHandler {
 			console.warn(error)
 			console.warn(error.status)
 			console.warn('----------------------------------------------------------')
-			//criar log
+			// criar log
 		} else {
 			console.warn('----------------------------------------------------------')
 			console.warn('Global error')

@@ -10,7 +10,7 @@ import { AppComponent } from './app.component'
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDatabase } from './in-memory-database';
-import { ErrorService } from './core/sentry/error.service';
+import { ErrorHandlerService } from './core/errorHandler/error-handler.service';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -24,7 +24,7 @@ import { ErrorService } from './core/sentry/error.service';
 		HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
 	],
 	providers: [
-		{ provide: ErrorHandler, useClass: ErrorService, },
+		{ provide: ErrorHandler, useClass: ErrorHandlerService, },
 	],
 	bootstrap: [AppComponent]
 })
