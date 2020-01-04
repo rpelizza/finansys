@@ -31,6 +31,7 @@
         "moment": "^2.24.0",
         "primeicons": "^2.0.0",
         "primeng": "^9.0.0-rc.2",
+        "rollbar": "^2.14.4",
         "rxjs": "~6.4.0",
         "toastr": "^2.1.4",
         "tslib": "^1.10.0",
