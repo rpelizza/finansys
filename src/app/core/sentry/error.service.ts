@@ -16,10 +16,20 @@ export class ErrorService implements ErrorHandler {
 	handleError(error: any) {
 		const eventId = Sentry.captureException(error.originalError || error);
 		if (Error instanceof HttpErrorResponse) {
-			console.warn(error.status);
-			// disparar email aqui
+			console.warn('----------------------------------------------------------')
+			console.warn('HTTP error')
+			console.warn('----------------------------------------------------------')
+			console.warn(error)
+			console.warn(error.status)
+			console.warn('----------------------------------------------------------')
+			//criar log
 		} else {
-			// disparar email aqui
+			console.warn('----------------------------------------------------------')
+			console.warn('Global error')
+			console.warn('----------------------------------------------------------')
+			console.warn(error)
+			console.warn('----------------------------------------------------------')
+			// criar log
 		}
 	}
 }
