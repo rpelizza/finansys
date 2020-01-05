@@ -16,19 +16,19 @@ export class ErrorHandlerService implements ErrorHandler {
 	handleError(error: any) {
 		const eventId = Sentry.captureException(error.originalError || error);
 		if (Error instanceof HttpErrorResponse) {
-			console.warn('----------------------------------------------------------')
-			console.warn('HTTP error')
-			console.warn('----------------------------------------------------------')
-			console.warn(error)
-			console.warn(error.status)
-			console.warn('----------------------------------------------------------')
+			console.error('----------------------------------------------------------')
+			console.error('HTTP error')
+			console.error('----------------------------------------------------------')
+			console.error(error)
+			console.error(error.status)
+			console.error('----------------------------------------------------------')
 			// criar log
 		} else {
-			console.warn('----------------------------------------------------------')
-			console.warn('Global error')
-			console.warn('----------------------------------------------------------')
-			console.warn(error)
-			console.warn('----------------------------------------------------------')
+			console.error('----------------------------------------------------------')
+			console.error('Global error')
+			console.error('----------------------------------------------------------')
+			console.error(error)
+			console.error('----------------------------------------------------------')
 			// criar log
 		}
 	}
