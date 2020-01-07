@@ -10,7 +10,7 @@ import { AppComponent } from './app.component'
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDatabase } from './in-memory-database';
-import { ErrorHandlerService } from './core/errorHandler/error-handler.service';
+import { ErrorHandlerService } from './core/service/error-handler/error-handler.service';
 
 @NgModule({
 	declarations: [AppComponent],
