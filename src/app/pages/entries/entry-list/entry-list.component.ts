@@ -16,7 +16,7 @@ export class EntryListComponent implements OnInit {
 
 	ngOnInit() {
 		this.entryService.getAll().subscribe((res) => {
-			this.entries = res
+			this.entries = res.sort((a, b) => b.id - a.id)
 		})
 	}
 
