@@ -8,6 +8,8 @@ import { EntryService } from '../shared/entry.service'
 import { switchMap } from 'rxjs/operators'
 
 import toastr from 'toastr'
+import { Category } from '../../categories/shared/category.model'
+import { CategoryService } from '../../categories/shared/category.service'
 
 @Component({
 	selector: 'app-entry-form',
@@ -22,6 +24,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 	serverErrorMessages: string[] = null
 	submittingForm: boolean = false
 	entry: Entry = new Entry()
+	categories: Category[] = []
 
 	imaskConfig = {
 		mask: Number,
@@ -47,13 +50,18 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 		private entryService: EntryService,
 		private route: ActivatedRoute,
 		private router: Router,
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		private categoryService: CategoryService
 	) { }
 
 	ngOnInit() {
 		this.setCurrentAction()
 		this.buildEntryForm()
 		this.loadEntry()
+
+		this.categoryService.getAll().subscribe((res) => {
+			this.categories = res
+		})
 	}
 
 	ngAfterContentChecked() {
