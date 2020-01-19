@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations' 
 import { NgModule, ErrorHandler } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +17,7 @@ import { ErrorHandlerService } from './core/service/error-handler/error-handler.
 	declarations: [AppComponent],
 	imports: [
 		BrowserModule,
+		BrowserAnimationsModule,
 		AppRoutingModule,
 		LoadingBarModule,
 		LoadingBarRouterModule,
