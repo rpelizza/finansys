@@ -12,7 +12,9 @@ export class CategoryListComponent implements OnInit {
 
 	categories: Category[] = []
 
-	constructor(private categoryService: CategoryService) { }
+	constructor(
+		private categoryService: CategoryService
+	) { }
 
 	ngOnInit() {
 		this.categoryService.getAll().subscribe((res) => {
