@@ -51,17 +51,12 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 		private route: ActivatedRoute,
 		private router: Router,
 		private formBuilder: FormBuilder,
-		private categoryService: CategoryService
 	) { }
 
 	ngOnInit() {
 		this.setCurrentAction()
 		this.buildEntryForm()
 		this.loadEntry()
-
-		this.categoryService.getAll().subscribe((res) => {
-			this.categories = res
-		})
 	}
 
 	ngAfterContentChecked() {
@@ -120,7 +115,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 	}
 
 	private createEntry() {
-		const entry: Entry = Object.assign(new Entry(), this.entryForm.value)
+		const entry: Entry = Entry.fromJSON(this.entryForm.value)
 
 		this.entryService.create(entry)
 			.subscribe(
@@ -129,7 +124,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 	}
 
 	private updateEntry() {
-		const entry: Entry = Object.assign(new Entry(), this.entryForm.value)
+		const entry: Entry = Entry.fromJSON(this.entryForm.value)
 
 		this.entryService.update(entry)
 			.subscribe(

@@ -12,20 +12,23 @@ import { CategoryService } from '../../categories/shared/category.service'
 })
 export class EntryService extends BaseResourceService<Entry> {
 
-	constructor(protected injector: Injector, private categoryService: CategoryService) {
-		super('api/entries', injector)
+	constructor(
+		protected injector: Injector,
+		private categoryService: CategoryService
+	) {
+		super('api/entries', injector, Entry.fromJSON)
 	}
 
 	create(entry: Entry): Observable<Entry> {
 		return this.categoryService.getById(entry.categoryId).pipe(
 			flatMap(category => {
-				entry.category = category				
+				entry.category = category
 				return super.create(entry)
-		}))
+			}))
 	}
 
 	update(entry: Entry): Observable<Entry> {
-		
+
 		return this.categoryService.getById(entry.categoryId).pipe(
 			flatMap(category => {
 				entry.category = category
@@ -33,21 +36,5 @@ export class EntryService extends BaseResourceService<Entry> {
 			})
 		)
 	}
-
-	// ! Protected Methods
-	protected jsonDataToResources(jsonData: any[]): Entry[] {
-		const entries: Entry[] = []
-
-		jsonData.forEach(el => {
-			const entry = Object.assign(new Entry(), el)
-			entries.push(entry)
-		})
-
-		return entries
-	}
-
-	protected jsonDataToResource(jsonData: any): Entry {
-		return Object.assign(new Entry(), jsonData)
-	}	
 
 }
